@@ -11,6 +11,12 @@ cask "hayate" do
 
   app "Hayate.app"
 
+  postflight do
+    system_command "xattr",
+                   args: ["-d", "-r", "com.apple.quarantine", "#{appdir}/Hayate.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/com.buildwithrizky.hayate",
     "~/Library/Saved Application State/com.buildwithrizky.hayate.savedState",
