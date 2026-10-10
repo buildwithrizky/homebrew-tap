@@ -1,6 +1,6 @@
 cask "hayate" do
-  version "0.1.3"
-  sha256 "4e544c321c4eb7b27e087e0dca5bb238623d1bd8bbad463014755198ee9b1292"
+  version "0.1.5"
+  sha256 "2cefea7d65b9207ef429084b68e354e7a01ee899019c7d8674b7981789b59642"
 
   url "https://github.com/buildwithrizky/hayate/releases/download/v#{version}/Hayate_#{version}_aarch64.dmg"
   name "Hayate"
@@ -11,13 +11,11 @@ cask "hayate" do
 
   app "Hayate.app"
 
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Hayate.app"],
-                   sudo: false
-    system_command "/usr/bin/codesign",
-                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/Hayate.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-cr", "{{appdir}}/Hayate.app"]
+    run "/usr/bin/codesign",
+        args: ["--force", "--deep", "--sign", "-", "{{appdir}}/Hayate.app"]
   end
 
   zap trash: [
