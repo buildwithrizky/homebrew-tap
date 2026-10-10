@@ -12,8 +12,11 @@ cask "hayate" do
   app "Hayate.app"
 
   postflight do
-    system_command "xattr",
-                   args: ["-d", "-r", "com.apple.quarantine", "#{appdir}/Hayate.app"],
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Hayate.app"],
+                   sudo: false
+    system_command "/usr/bin/codesign",
+                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/Hayate.app"],
                    sudo: false
   end
 
