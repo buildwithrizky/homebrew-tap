@@ -1,6 +1,6 @@
 cask "hayate" do
-  version "0.1.15"
-  sha256 "2f099aa353aacc6ad92c57764facb2a4919671f6ecf5b932ce7095ad25d720da"
+  version "0.1.16"
+  sha256 "09a8ea665ef43710ba531513b7db219133dfd62f9adc2b193abf90f6a9128937"
 
   url "https://github.com/buildwithrizky/hayate/releases/download/v#{version}/Hayate_#{version}_aarch64.dmg"
   name "Hayate"
